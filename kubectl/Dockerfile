@@ -11,4 +11,5 @@ RUN set -x                  && \
 FROM scratch
 COPY --from=builder /kubectl /kubectl
 COPY --from=builder /etc/passwd /etc/passwd
+USER kubectl
 ENTRYPOINT ["/kubectl"]
