@@ -8,6 +8,7 @@ ENV PATH $PATH:$GOBIN:$GOPATH/bin
 
 # NOTE: tools below are based on jare/go-tools, will slim down in future
 RUN mkdir -p /home/developer/workspace/bin                  && \
+    GO111MODULE=on go get golang.org/x/tools/gopls@latest   && \
     GO111MODULE=on go get -buildmode=exe -ldflags '-s -w'      \
       golang.org/x/lint/golint                                 \
       golang.org/x/tools/cmd/benchcmp                          \
@@ -33,7 +34,6 @@ RUN mkdir -p /home/developer/workspace/bin                  && \
       golang.org/x/tools/refactor/importgraph                  \
       golang.org/x/tools/refactor/rename                       \
       golang.org/x/tools/refactor/satisfy                      \
-      golang.org/x/tools/gopls@latest                          \
       github.com/davidrjenni/reftools/cmd/fillstruct           \
       github.com/fatih/gomodifytags                            \
       github.com/rogpeppe/godef                                \
