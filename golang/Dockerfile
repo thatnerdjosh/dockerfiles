@@ -6,6 +6,9 @@ ENV GOROOT /usr/local/go
 ENV GOBIN  $GOROOT/bin
 ENV PATH $PATH:$GOBIN:$GOPATH/bin
 
+RUN apk update && \
+    apk add curl
+
 # NOTE: tools below are based on jare/go-tools, will slim down in future
 RUN mkdir -p /home/developer/workspace/bin                  && \
     GO111MODULE=on go get golang.org/x/tools/gopls@latest   && \
